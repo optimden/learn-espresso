@@ -36,16 +36,16 @@ class GalleryFragment : Fragment() {
         val root: View = binding.root
 
         fab = requireActivity().findViewById(R.id.fab)
-        fab!!.visibility = View.INVISIBLE
-        fab!!.isClickable = false
+        fab?.visibility = View.INVISIBLE
+        fab?.isClickable = false
 
         progressBar = root.findViewById(R.id.progress_bar)
         recyclerView = root.findViewById(R.id.recycle_view)
         fakeLoadData()
 
         setLists()
-        recyclerView!!.layoutManager = LinearLayoutManager(context)
-        recyclerView!!.adapter = GalleryAdapter(itemList)
+        recyclerView?.layoutManager = LinearLayoutManager(context)
+        recyclerView?.adapter = GalleryAdapter(itemList)
         return root
     }
 
@@ -56,14 +56,14 @@ class GalleryFragment : Fragment() {
     }
 
     private fun fakeLoadData() {
-        progressBar!!.visibility = View.VISIBLE
-        recyclerView!!.visibility = View.INVISIBLE
+        progressBar?.visibility = View.VISIBLE
+        recyclerView?.visibility = View.INVISIBLE
         val handler = Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
                 run {
-                    progressBar!!.visibility = View.INVISIBLE
-                    recyclerView!!.visibility = View.VISIBLE
+                    progressBar?.visibility = View.INVISIBLE
+                    recyclerView?.visibility = View.VISIBLE
                 }
             }
         }, 1500)
