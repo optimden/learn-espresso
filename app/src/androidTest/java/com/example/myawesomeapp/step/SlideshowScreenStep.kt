@@ -1,4 +1,5 @@
 package com.example.myawesomeapp.step
+
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.action.ViewActions.click
@@ -9,8 +10,10 @@ class SlideshowScreenStep {
 
     private val slideshowScreen = SlideshowScreen()
 
-    fun checkSlideshowscreenTextIsDisplayed(){
+    fun checkSlideshowScreenTextIsDisplayed() {
         slideshowScreen.slideshowScreenText().check(matches(isDisplayed()))
+        slideshowScreen.slideshowScreenToolbarText().check(matches(isDisplayed()))
+
     }
 
 }

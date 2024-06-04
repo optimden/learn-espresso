@@ -28,7 +28,7 @@ class MyFirstTest {
     fun openSlideshowFromMenu() {
         main.callPanelOfNavigationFromMainScreen()
         navPanel.callSlideshowScreenFromNavigationPanel()
-        slideshow.checkSlideshowscreenTextIsDisplayed()
+        slideshow.checkSlideshowScreenTextIsDisplayed()
     }
 
     @After

@@ -1,5 +1,6 @@
 package com.example.myawesomeapp.step
 
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.action.ViewActions.click
@@ -11,9 +12,14 @@ class MainScreenStep {
     fun checkMainScreenTextIsDisplayed() {
         mainElement.mainScreenText()
             .check(matches(isDisplayed()))
+        mainElement.mainScreenToolbarText()
+            .check(matches(isDisplayed()))
+
     }
 
-    fun callPanelOfNavigationFromMainScreen(){
+    fun callPanelOfNavigationFromMainScreen() {
         mainElement.mainScreenNavigationButton().perform(click())
     }
+
+
 }

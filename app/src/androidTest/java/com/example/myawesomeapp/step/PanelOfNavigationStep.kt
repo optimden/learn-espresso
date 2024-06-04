@@ -1,4 +1,5 @@
 package com.example.myawesomeapp.step
+
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.action.ViewActions.click
@@ -8,11 +9,11 @@ class PanelOfNavigationStep {
 
     private val navPanel = PanelOfNavigation()
 
-    fun panelOfNavigationTextIsDisplayed(){
+    fun panelOfNavigationTextIsDisplayed() {
         navPanel.navigationPanelText().check(matches(isDisplayed()))
     }
 
-    fun callSlideshowScreenFromNavigationPanel(){
+    fun callSlideshowScreenFromNavigationPanel() {
 
         navPanel.navigationPanelSlideshowButton().perform(click())
     }
