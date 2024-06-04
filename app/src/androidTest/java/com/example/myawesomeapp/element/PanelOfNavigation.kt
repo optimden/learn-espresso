@@ -25,9 +25,16 @@ class PanelOfNavigation {
 
     }
 
-    fun headerOfNavigationPanel(): ViewInteraction {
+    fun headerUserPictures(): ViewInteraction {
         return onView(
             withId(R.id.imageView),
+        )
+
+    }
+
+    fun headerUserEmail(): ViewInteraction {
+        return onView(
+            withId(R.id.textView),
         )
 
     }

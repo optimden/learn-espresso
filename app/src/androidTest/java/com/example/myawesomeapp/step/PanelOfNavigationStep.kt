@@ -26,7 +26,8 @@ class PanelOfNavigationStep {
     }
 
     fun headerOfNavigationPanelIsDisplayed() {
-        navPanel.headerOfNavigationPanel().check(matches(isDisplayed()))
+        navPanel.headerUserPictures().check(matches(isDisplayed()))
+        navPanel.headerUserPictures().check(matches(isDisplayed()))
     }
 
     fun goHomeScreen() {
