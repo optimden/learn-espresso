@@ -3,6 +3,10 @@ package com.example.myawesomeapp.element
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
+import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
+import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withResourceName
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.example.myawesomeapp.R
 
@@ -13,20 +17,46 @@ class PanelOfNavigation {
 
     fun navigationPanelText(): ViewInteraction {
         return onView(
+           allOf(
+               withText("Android Studio"),
+               isDescendantOfA(withId(R.id.nav_view))
+           )
+        )
+
+    }
+
+    fun headerOfNavigationPanel(): ViewInteraction {
+        return onView(
+            withId(R.id.imageView),
+        )
+
+    }
+
+    fun slideshowButton(): ViewInteraction {
+        return onView(
             allOf(
-                withText(R.string.menu_slideshow),
-                withText(R.string.menu_home),
-                withText(R.string.menu_gallery)
+                withText("Slideshow"),
+                isDescendantOfA(withId(R.id.nav_view))
             )
         )
-
     }
 
-    fun navigationPanelSlideshowButton(): ViewInteraction {
+    fun gallleryButton(): ViewInteraction {
         return onView(
-            withText(R.string.menu_slideshow)
+            allOf(
+                withText("Gallery"),
+                isDescendantOfA(withId(R.id.nav_view))
+            )
         )
     }
 
+    fun homeButton(): ViewInteraction {
+        return onView(
+            allOf(
+                withText("Home"),
+                isDescendantOfA(withId(R.id.nav_view))
+            )
+        )
+    }
 
 }

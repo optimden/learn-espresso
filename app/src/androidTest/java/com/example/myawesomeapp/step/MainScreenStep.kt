@@ -14,6 +14,8 @@ class MainScreenStep {
             .check(matches(isDisplayed()))
         mainElement.mainScreenToolbarText()
             .check(matches(isDisplayed()))
+        mainElement.mainScreenOptionsButton()
+            .check(matches(isDisplayed()))
 
     }
 

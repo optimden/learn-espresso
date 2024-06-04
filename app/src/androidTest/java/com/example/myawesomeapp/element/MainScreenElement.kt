@@ -39,10 +39,8 @@ class MainScreenElement {
 
     fun mainScreenOptionsButton(): ViewInteraction {
         return onView(
-           allOf(
-               withId(R.id.action_settings),
-               isDescendantOfA(withId(R.id.toolbar))
-           )
+            withContentDescription("Ещё")
         )
+
     }
 }
