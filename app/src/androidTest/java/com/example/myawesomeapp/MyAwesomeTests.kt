@@ -33,6 +33,12 @@ class MyAwesomeTests {
         ).check(matches(isDisplayed()))
     }
 
+   @Test
+   fun openMenuOnMainScreen() {
+
+   }
+
+
     @After
     fun tearDown() {
         scenario.close()
