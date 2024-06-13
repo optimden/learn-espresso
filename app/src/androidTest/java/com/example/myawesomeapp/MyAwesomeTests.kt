@@ -1,13 +1,12 @@
+@file:Suppress("ktlint:standard:no-wildcard-imports")
+
 package com.example.myawesomeapp
 
 import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.hamcrest.core.AllOf.allOf
+import com.example.myawesomeapp.step.MainScreenStep
+import com.example.myawesomeapp.step.PanelOfNavigationStep
+import com.example.myawesomeapp.step.SlideshowScreenStep
 import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
@@ -17,6 +16,9 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class MyAwesomeTests {
     private lateinit var scenario: ActivityScenario<MainActivity>
+    private val main = MainScreenStep()
+    private val navPanel = PanelOfNavigationStep()
+    private val slideshow = SlideshowScreenStep()
 
     @Before
     fun setup() {
@@ -24,20 +26,37 @@ class MyAwesomeTests {
     }
 
     @Test
-    fun checkMainScreen() {
-        onView(
-            allOf(
-                withId(R.id.text_home),
-                withText("This is home Fragment")
-            )
-        ).check(matches(isDisplayed()))
+    fun openMenuOnMainScreen() {
     }
 
-   @Test
-   fun openMenuOnMainScreen() {
+    @Test
+    fun openSlideshowFromMenu() {
+        main.clickOnPanelOfNavigationFromMainScreen()
+        navPanel.clickOnSlideshowScreenFromNavigationPanel()
+        slideshow.checkSlideshowScreenTextIsDisplayed()
+    }
 
-   }
+    @Test
+    fun checkMenu() {
+        main.checkMainScreenTextIsDisplayed()
+        main.clickOnPanelOfNavigationFromMainScreen()
+        navPanel.checkHeaderOfNavigationPanelIsDisplayed()
+        navPanel.checkUserEmailIsDisplayed()
+        navPanel.checkPanelOfNavigationButtonsIsDisplayed()
+        navPanel.checkPanelOfNavigationTextIsDisplayed()
+        navPanel.clickOnHomeScreenButton()
+    }
 
+    @Test
+    fun checkMailButtonOnMainScreen() {
+        main.checkMainScreenTextIsDisplayed()
+        main.checkMailButtonIsDisplayed()
+        main.clickOnMailButton()
+        main.checkSnackBarTextIsDisplayed()
+        main.swipeSnackBar()
+        Thread.sleep(1000)
+        main.checkSnackBarIsNotDisplayed()
+    }
 
     @After
     fun tearDown() {

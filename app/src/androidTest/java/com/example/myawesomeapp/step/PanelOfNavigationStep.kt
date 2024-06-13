@@ -1,36 +1,37 @@
 package com.example.myawesomeapp.step
 
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import org.hamcrest.core.AllOf.allOf
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.action.ViewActions.click
-import com.example.myawesomeapp.element.PanelOfNavigation
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import com.example.myawesomeapp.element.PanelOfNavigationElement
 
 class PanelOfNavigationStep {
+    private val navPanel = PanelOfNavigationElement()
 
-    private val navPanel = PanelOfNavigation()
-
-    fun panelOfNavigationTextIsDisplayed() {
+    fun checkPanelOfNavigationTextIsDisplayed() {
         navPanel.navigationPanelText().check(matches(isDisplayed()))
     }
 
-    fun panelOfNavigationButtonsIsDisplayed() {
-            navPanel.gallleryButton().check(matches(isDisplayed()))
-            navPanel.slideshowButton().check(matches(isDisplayed()))
-            navPanel.homeButton().check(matches(isDisplayed()))
+    fun checkUserEmailIsDisplayed() {
+        navPanel.headerUserEmailElement().check(matches(isDisplayed()))
     }
 
-    fun callSlideshowScreenFromNavigationPanel() {
-
-        navPanel.slideshowButton().perform(click())
+    fun checkPanelOfNavigationButtonsIsDisplayed() {
+        navPanel.gallleryButtonElement().check(matches(isDisplayed()))
+        navPanel.slideshowButtonElement().check(matches(isDisplayed()))
+        navPanel.homeButtonElement().check(matches(isDisplayed()))
     }
 
-    fun headerOfNavigationPanelIsDisplayed() {
-        navPanel.headerUserPictures().check(matches(isDisplayed()))
-        navPanel.headerUserPictures().check(matches(isDisplayed()))
+    fun clickOnSlideshowScreenFromNavigationPanel() {
+        navPanel.slideshowButtonElement().perform(click())
     }
 
-    fun goHomeScreen() {
-        navPanel.homeButton().perform(click())
+    fun checkHeaderOfNavigationPanelIsDisplayed() {
+        navPanel.headerUserPicturesElement().check(matches(isDisplayed()))
+        navPanel.headerUserPicturesElement().check(matches(isDisplayed()))
+    }
+
+    fun clickOnHomeScreenButton() {
+        navPanel.homeButtonElement().perform(click())
     }
 }
