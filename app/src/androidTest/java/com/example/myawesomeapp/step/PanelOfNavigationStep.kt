@@ -2,6 +2,7 @@ package com.example.myawesomeapp.step
 
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isChecked
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import com.example.myawesomeapp.element.PanelOfNavigationElement
 
@@ -33,5 +34,13 @@ class PanelOfNavigationStep {
 
     fun clickOnHomeScreenButton() {
         navPanel.homeButtonElement().perform(click())
+    }
+
+    fun clickOnGalleryButton() {
+        navPanel.gallleryButtonElement().perform(click())
+    }
+
+    fun checkFocusGalleryButton()  {
+        navPanel.gallleryButtonElement().check(matches(isChecked()))
     }
 }

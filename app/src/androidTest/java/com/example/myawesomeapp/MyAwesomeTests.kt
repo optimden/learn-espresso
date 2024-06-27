@@ -4,9 +4,12 @@ package com.example.myawesomeapp
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.myawesomeapp.step.GalleryScreenStep
 import com.example.myawesomeapp.step.MainScreenStep
 import com.example.myawesomeapp.step.PanelOfNavigationStep
 import com.example.myawesomeapp.step.SlideshowScreenStep
+import com.example.myawesomeapp.step.SnackebarStep
+import com.example.myawesomeapp.step.ToolbarStep
 import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
@@ -19,6 +22,9 @@ class MyAwesomeTests {
     private val main = MainScreenStep()
     private val navPanel = PanelOfNavigationStep()
     private val slideshow = SlideshowScreenStep()
+    private val snackBar = SnackebarStep()
+    private val gallery = GalleryScreenStep()
+    private val toolbar = ToolbarStep()
 
     @Before
     fun setup() {
@@ -31,7 +37,7 @@ class MyAwesomeTests {
 
     @Test
     fun openSlideshowFromMenu() {
-        main.clickOnPanelOfNavigationFromMainScreen()
+        toolbar.clickOnPanelOfNavigation()
         navPanel.clickOnSlideshowScreenFromNavigationPanel()
         slideshow.checkSlideshowScreenTextIsDisplayed()
     }
@@ -39,7 +45,7 @@ class MyAwesomeTests {
     @Test
     fun checkMenu() {
         main.checkMainScreenTextIsDisplayed()
-        main.clickOnPanelOfNavigationFromMainScreen()
+        toolbar.clickOnPanelOfNavigation()
         navPanel.checkHeaderOfNavigationPanelIsDisplayed()
         navPanel.checkUserEmailIsDisplayed()
         navPanel.checkPanelOfNavigationButtonsIsDisplayed()
@@ -52,10 +58,30 @@ class MyAwesomeTests {
         main.checkMainScreenTextIsDisplayed()
         main.checkMailButtonIsDisplayed()
         main.clickOnMailButton()
-        main.checkSnackBarTextIsDisplayed()
-        main.swipeSnackBar()
+        snackBar.checkMainScreenSnackBarTextIsDisplayed()
+        snackBar.swipeSnackBar()
         Thread.sleep(1000)
-        main.checkSnackBarIsNotDisplayed()
+        snackBar.checkSnackBarIsNotDisplayed()
+    }
+
+    @Test
+    fun checkGalleryItemsList() {
+        main.checkMainScreenTextIsDisplayed()
+        toolbar.clickOnPanelOfNavigation()
+        navPanel.clickOnGalleryButton()
+        navPanel.checkFocusGalleryButton()
+        Thread.sleep(1000)
+        gallery.checkGalleryScreenListOptionsIsDisplayed()
+        gallery.checkGalleryToolbarTextIsDisplayed()
+        gallery.checkFirstGalleryItemIsDisplayed()
+        gallery.clickOnFirstGalleryItem()
+        snackBar.checkFirstItemGalleryTextIsDisplayed()
+        snackBar.swipeSnackBar()
+        Thread.sleep(1000)
+        gallery.scrollGalleryItems()
+        gallery.checkLastGalleryItemIsDisplayed()
+        gallery.clickOnLastGalleryItem()
+        snackBar.checkLastItemGalleryTextIsDisplayed()
     }
 
     @After
