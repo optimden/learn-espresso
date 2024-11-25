@@ -7,7 +7,7 @@ import com.example.myawesomeapp.element.SlideshowScreen
 class SlideshowScreenStep {
     private val slideshowScreen = SlideshowScreen()
 
-    fun checkSlideshowsScreenIsDisplayed() {
+    fun checkSlideshowScreenIsDisplayed() {
         slideshowScreen.slideshowScreen.check(matches(isDisplayed()))
     }
 }
